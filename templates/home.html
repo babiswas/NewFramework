@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="{{url_for('static',filename='./main.css')}}">
+  </head>
+  <body>
+      <header>
+        <center><h1>Prime API Tests</h1></center>
+      </header>
+      <div class="control">
+          {% block content %}
+          <div id="">
+            <center>
+                <div class="panel" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                    <h2>Enviroment</h2>
+                </div>
+                <div class="newbot">
+                    <div>
+                        <h2>{{enviroment.name}}</h2>
+                    </div>
+                    <div>
+                        <p>
+                            {{enviroment.description}}
+                        </p>
+                    </div>
+                </div>
+            </center>
+            <div class="panel" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                <center><h2>All Accounts</h2></center>
+            </div>
+            <div>
+                <div id="sidepanel1">
+                    <div>
+                        <center>
+                            <button style="background-color:white;color:black;margin-top:15px;margin-bottom:15px;" class="btnd"><a href="{{url_for('account.add_account',envid=enviroment.id)}}">Add Account</a></button>
+                            <button style="background-color:white;color:black;margin-top:15px;margin-bottom:15px;" class="btnd"><a href="{{url_for('home.home')}}">Home</a></button>
+                        </center>
+                    </div>
+                </div>
+                <div id="sidepanel2">
+                    {% block accounts %}
+                    {% for acc in accounts%}
+                           <div class="newbot">
+                               <center>
+                                <div>
+                                    <p>
+                                     {{acc.accountid}}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p>
+                                        <h4><a href="{{url_for('testcase.test_list',envid=enviroment.id,accountid=acc.id)}}">{{acc.name}}</a></h4>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p>
+                                        <h3><a href="{{url_for('testcase.add_create_tests',envid=enviroment.id,accountid=acc.id)}}">Add Test</a></h3>
+                                    </p>
+                                </div>
+                               </center>
+                           </div>
+                    {% endfor %}
+                    <div style="height:40px;width:40%;margin-right:30%;margin-left:30%;display:inline-block;">
+                        {% if prev_url or next_url %}
+                            {% if prev_url %}
+                                <div>
+                                    <button class="btnd" style="color:white;"><a href={{prev_url}}>Prev</a></button>
+                                </div>
+                            {% endif %}
+                            {% if next_url %}
+                                <div>
+                                    <button class="btnd" style="color:white;"><a href={{next_url}}>Next</a></button>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                  </div>
+                    {% endblock %}
+                </div>
+            </div>
+           </div>
+          {% endblock %}
+      </div>
+  </body>
+</html>

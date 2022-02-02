@@ -1,0 +1,35 @@
+{% extends "home.html" %}
+{% block content %}
+   <div id="addbots">
+    <div class="panel" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+        <center><h2>Add Account</h2></center>
+    </div>
+    <center>
+        <form method="post" enctype="multipart/form-data">
+            <div>
+               <div><h3>{{form.accountid.label}}</h3></div>
+               <div>{{form.accountid}}</div>
+            </div>
+            <div>
+                <div><h3>{{form.name.label}}</h3></div>
+                <div>{{form.name}}</div>
+             </div>
+            <div>
+               <div><h3>{{form.clientid.label}}</h3></div>
+               <div>{{form.clientid}}</div>
+            </div>
+            <div>
+               <div><h3>{{form.clientsecret.label}}</h3></div>
+               <div>{{form.clientsecret}}</div>
+            </div>
+            <div>
+               <div><h3>{{form.refreshtoken.label}}</h3></div>
+               <div>{{form.refreshtoken}}</div>
+            </div>
+            <div >
+               <input type="submit" value="Submit">
+            </div>
+        </form>
+    </center>
+   </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "home.html" %}
+{% block content %}
+   <div id="">
+    <center>
+        <div class="panel" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+            <h2>All Tests</h2>
+        </div>
+        <div id="allbot">
+            <div>
+                {% for test in testlist %}
+                   <div class="newbot">
+                    <div>
+                        <p>
+                         {{test.id}}
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                         {{test.tags}}
+                        </p>
+                    </div>
+                    <div>
+                           <p>
+                            {{test.resourcePath}}
+                           </p>
+                    </div>
+                    <div>
+                        <p>
+                         {{test.description}}
+                        </p>
+                   </div>
+                   <div>
+                        <p>
+                        {{test.method}}
+                        </p>
+                   </div>
+                   </div>
+                {% endfor %}
+            </div>
+        </div>
+    </center>
+   </div>
+{% endblock %}
