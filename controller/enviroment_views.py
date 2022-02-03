@@ -1,11 +1,8 @@
-from Model import db
-from Model.Testmodel import Account,Enviroment
+from Model.Testmodel import Enviroment
 from Route.route import enviroment
 from flask import request
-from forms.forms import AccountForm
 from flask import url_for   
 from flask import render_template
-from flask import redirect
 
 
 @enviroment.route('/read',methods=['GET'])
