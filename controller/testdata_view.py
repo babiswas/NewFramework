@@ -1,8 +1,8 @@
 from Model import db
 from Model.Testmodel import Testdata
+from forms.forms import TestDataForm
 from Route.route import testdata
 from flask import request
-from forms.forms import TestDataForm
 from flask import redirect
 from flask import url_for
 from flask import render_template
@@ -10,17 +10,17 @@ from flask import render_template
 
 @testdata.route('/add',methods=['GET','POST'])
 def test_data_add():
-      testdataform=TestDataForm(request.form)
-      if request.method=="POST" and testdataform.validate:
-            testcaseid=request.form.get("testcaseid")
-            account_id=request.form.get("account_id")
-            enviroment_id=request.form.get("enviroment_id")
-            jsondata=request.form.get("jsondata")
-            testdata=Testdata(jsondata,testcaseid,account_id,enviroment_id)
-            db.session.add(testdata)
-            db.session.commit()
-            return redirect(url_for("testdata.test_data_list"))
-      return render_template("add_test_data.html",form=testdataform)
+        testdataform=TestDataForm(request.form)
+        if request.method=="POST" and testdataform.validate:
+                testcaseid=request.form.get("testcaseid")
+                account_id=request.form.get("account_id")
+                enviroment_id=request.form.get("enviroment_id")
+                jsondata=request.form.get("jsondata")
+                testdata=Testdata(jsondata,testcaseid,account_id,enviroment_id)
+                db.session.add(testdata)
+                db.session.commit()
+                return redirect(url_for("testdata.test_data_list"))
+        return render_template("add_test_data.html",form=testdataform)
 
 
 @testdata.route('/read',methods=['GET'])

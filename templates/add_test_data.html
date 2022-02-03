@@ -1,0 +1,31 @@
+{% extends "home.html" %}
+{% block content %}
+   <div id="addbots">
+    <div class="panel" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+        <center><h2>Add Test Data</h2></center>
+    </div>
+    <center>
+        <form method="post" enctype="multipart/form-data">
+            <div>
+               <div><h3>{{form.testcaseid.label}}</h3></div>
+               <div>{{form.testcaseid}}</div>
+            </div>
+            <div>
+                <div><h3>{{form.account_id.label}}</h3></div>
+                <div>{{form.account_id}}</div>
+             </div>
+            <div>
+               <div><h3>{{form.enviroment_id.label}}</h3></div>
+               <div>{{form.enviroment_id}}</div>
+            </div>
+            <div>
+               <div><h3>{{form.jsondata.label}}</h3></div>
+               <div>{{form.jsondata}}</div>
+            </div>
+            <div >
+               <input type="submit" value="Submit">
+            </div>
+        </form>
+    </center>
+   </div>
+{% endblock %}
