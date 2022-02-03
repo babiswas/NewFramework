@@ -1,10 +1,10 @@
 from flask import render_template
 from Route.route import home
-from Model.Testmodel import PrimeConfig,Account
+from Model.Testmodel import Enviroment
 
 @home.route('/')
 def home():
-    enviroments=PrimeConfig.query.all()
+    enviroments=Enviroment.query.all()
     return render_template("home.html",enviroments=enviroments)
 
 

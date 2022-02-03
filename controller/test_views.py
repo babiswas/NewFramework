@@ -20,7 +20,7 @@ def add_create_tests():
          testcase=Testcase(testid,testtag,testdescription,testresource,mthd,role)
          db.session.add(testcase)
          db.session.commit()
-         return redirect(url_for("testcase.test_list"))
+         return redirect(url_for("home.home"))
       return render_template("add_test.html",form=testform)
 
 
@@ -36,11 +36,12 @@ def edit_test(testid):
          testform=TestForm(obj=testobj)
          if request.method=="POST" and testform.validate:
                testobj.test_tags=request.form.get("tags")
-               testobj.testdescription=request.form.get("description")
-               testobj.testresource=request.form.get("resourcePath")
-               testobj.method=request.form.get("method")
+               testobj.test_description=request.form.get("description")
+               testobj.resourcePath=request.form.get("resourcePath")
+               testobj.http_method=request.form.get("method")
+               testobj.role=request.form.get("role")
                db.session.commit()
-               return redirect(url_for("testcase.read"))
+               return redirect(url_for("home.home"))
          return render_template("add_test.html",form=testform)
 
    

@@ -1,5 +1,5 @@
 from Model import db
-from Model.Testmodel import Account,PrimeConfig,Testcase
+from Model.Testmodel import Account
 from Route.route import account
 from flask import request
 from forms.forms import AccountForm
@@ -8,8 +8,8 @@ from flask import url_for
 from flask import render_template
 
 
-@account.route('/<int:envid>/add',methods=['GET','POST'])
-def add_account(envid):
+@account.route('/add',methods=['GET','POST'])
+def add_account():
         accountform=AccountForm(request.form)
         if request.method=="POST" and accountform.validate:
             name=request.form.get("name")
@@ -17,10 +17,11 @@ def add_account(envid):
             clientid=request.form.get("clientid")
             clientsecret=request.form.get("clientsecret")
             refreshtoken=request.form.get("refreshtoken")
-            account=Account(name,accountid,clientid,clientsecret,refreshtoken,envid)
+            enviroment_id=request.form.get("enviroment")
+            account=Account(name,accountid,clientid,clientsecret,refreshtoken,int(enviroment_id))
             db.session.add(account)
             db.session.commit()
-            return redirect(url_for("enviroment.Env_detail",envid=envid))
+            return redirect(url_for("home.home"))
         return render_template("accountform.html",form=accountform)
 
 
@@ -38,16 +39,11 @@ def update_account(accountid):
         accountobj=Account.query.get(accountid)
         accountform=AccountForm(obj=accountobj)
         if request.method=="POST" and accountform.validate:
-            accountobj.clientid=request.form.get("tags")
-            accountobj.clientsecret=request.form.get("description")
-            accountobj.refreshtoken=request.form.get("resourcePath")
+            accountobj.clientid=request.form.get("clientid")
+            accountobj.clientsecret=request.form.get("clientsecret")
+            accountobj.refreshtoken=request.form.get("refreshtoken")
             db.session.commit()
-            return redirect(url_for("account.account_list"))
+            return redirect(url_for("home.home"))
         return render_template("add_account.html",form=accountform)
 
 
-@account.route('/read/<int:accountid>',methods=['GET'])
-def Env_list(accountid):
-      account=Account.query.get(id=accountid).first()
-      tests=Testcase.query.get(acc_id=accountid).all()
-      return render_template('enviroment.html',account=account,tests=tests)
