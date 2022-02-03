@@ -1,0 +1,46 @@
+{% extends "home.html" %}
+{% block content %}
+<div id="addtable">
+    <center>
+        <div class="panel">
+            <h2>Account List</h2>
+        </div>
+        <div>
+            <table id="mytable">
+                <tr>
+                    <th>Account Id</th>
+                    <th>Account Name</th>
+                    <th>Client ID</th>
+                    <th>Client Secret</th>
+                    <th>Enviroment</th>
+                </tr>
+                {% for acc in accountlist.items %}
+                <tr>
+                   <td>{{acc.account_id}}</td>
+                   <td>{{acc.account_name}}</td>
+                   <td>{{acc.clientid}}</td>
+                   <td>{{acc.clientsecret}}</td>
+                   {% if acc.enviroment_id==1 %}
+                   <td>QE</td>
+                   {% elif acc.enviroment_id==2 %}
+                   <td>STAGE1</td>
+                   {% elif acc.enviroment_id==3 %}
+                   <td>STAGE4</td>
+                   {% elif acc.enviroment_id==4 %}
+                   <td>STAGE</td>
+                   {% elif acc.enviroment_id==5 %}
+                   <td>AZ</td>
+                   {% elif acc.enviroment_id==6 %}
+                   <td>APAC</td>
+                   {% elif acc.enviroment_id==7 %}
+                   <td>PROD</td>
+                   {% elif acc.enviroment_id==8 %}
+                   <td>EU</td>
+                   {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </center>
+   </div>
+{% endblock %}

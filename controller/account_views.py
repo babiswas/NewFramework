@@ -18,7 +18,7 @@ def add_account():
             clientsecret=request.form.get("clientsecret")
             refreshtoken=request.form.get("refreshtoken")
             enviroment_id=request.form.get("enviroment")
-            account=Account(name,accountid,clientid,clientsecret,refreshtoken,int(enviroment_id))
+            account=Account(accountid,name,clientid,clientsecret,refreshtoken,int(enviroment_id))
             db.session.add(account)
             db.session.commit()
             return redirect(url_for("home.home"))
@@ -29,6 +29,7 @@ def add_account():
 def account_list():
         page=request.args.get('page',1,type=int)
         accountlist=Account.query.paginate(page=page,per_page=5)
+        print(accountlist)
         next_url=url_for('account.account_list',page=accountlist.next_num) if accountlist.has_next else None
         prev_url=url_for('account.account_list',page=accountlist.prev_num) if accountlist.has_prev else None
         return render_template('account_list.html',accountlist=accountlist,next_url=next_url,prev_url=prev_url)
