@@ -46,25 +46,25 @@
    <div id="addtable">
        <center>
             <div id="envpanel">
-                <a href="">QE</a>
+                <a href="{{url_for('account.account_list',myenviroment=1)}}">QE</a>
             </div>
             <div id="envpanel">
-                <a href="">STAGE1</a>
+                <a href="{{url_for('account.account_list',myenviroment=2)}}">STAGE1</a>
             </div>
             <div id="envpanel">
-                <a href="">STAGE4</a>
+                <a href="{{url_for('account.account_list',myenviroment=3)}}">STAGE4</a>
             </div>
             <div id="envpanel">
-                <a href="">STAGE</a>
+                <a href="{{url_for('account.account_list',myenviroment=4)}}">STAGE</a>
             </div>
             <div id="envpanel">
-                <a href="">PROD</a>
+                <a href="{{url_for('account.account_list',myenviroment=5)}}">PROD</a>
             </div>
             <div id="envpanel">
-                <a href="">EU</a>
+                <a href="{{url_for('account.account_list',myenviroment=6)}}">EU</a>
             </div>
             <div id="envpanel">
-                <a href="">ALL</a>
+                <a href="{{url_for('account.account_list')}}">ALL</a>
             </div>
        </center>
    </div>
