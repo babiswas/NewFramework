@@ -10,7 +10,7 @@ def get_data(testid):
         try:
             data=Testdata.query.get(testid)
             if data:
-                return jsonify(data.primedata)
+                return jsonify(data.test_data)
             else:
                 raise Exception
         except Exception as e:
