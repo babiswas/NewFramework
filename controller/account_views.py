@@ -27,12 +27,23 @@ def add_account():
 
 @account.route('/read',methods=['GET'])
 def account_list():
-        page=request.args.get('page',1,type=int)
-        accountlist=Account.query.paginate(page=page,per_page=5)
-        print(accountlist)
-        next_url=url_for('account.account_list',page=accountlist.next_num) if accountlist.has_next else None
-        prev_url=url_for('account.account_list',page=accountlist.prev_num) if accountlist.has_prev else None
-        return render_template('account_list.html',accountlist=accountlist,next_url=next_url,prev_url=prev_url)
+        print(request.args)
+        myenviroment=request.args.get("myenviroment",None)
+        print(myenviroment)
+        if myenviroment==None:
+                page=request.args.get('page',1,type=int)
+                accountlist=Account.query.paginate(page=page,per_page=5)
+                next_url=url_for('account.account_list',page=accountlist.next_num) if accountlist.has_next else None
+                prev_url=url_for('account.account_list',page=accountlist.prev_num) if accountlist.has_prev else None
+                return render_template('account_list.html',accountlist=accountlist,next_url=next_url,prev_url=prev_url)
+        else:
+                page=request.args.get('page',1,type=int)
+                accountlist=Account.query.filter_by(enviroment_id=int(myenviroment)).paginate(page=page,per_page=5)
+                next_url=url_for('account.account_list',page=accountlist.next_num) if accountlist.has_next else None
+                prev_url=url_for('account.account_list',page=accountlist.prev_num) if accountlist.has_prev else None
+                return render_template('account_list.html',accountlist=accountlist,next_url=next_url,prev_url=prev_url)
+
+
 
 
 @account.route('/edit/<int:accountid>',methods=['GET','POST'])

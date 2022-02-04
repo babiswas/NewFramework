@@ -141,8 +141,17 @@ img{
 #botcontrol{
   width:100%;
   height:50%;
-  margin-top:2px;
+  margin-top:20px;
   overflow:hidden;
+}
+
+#envpanel{
+  width:5%;
+  height:5%;
+  display:inline;
+  margin-right:5px;
+  margin-left:5px;
+  color:white;
 }
 
 #navbar{
