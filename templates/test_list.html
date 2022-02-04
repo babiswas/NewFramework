@@ -1,42 +1,31 @@
 {% extends "home.html" %}
 {% block content %}
-   <div id="">
+<div id="addtable">
     <center>
-        <div class="panel" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-            <h2>All Tests</h2>
+        <div class="panel">
+            <h2>Test List</h2>
         </div>
-        <div id="allbot">
-            <div>
+        <div>
+            <table id="mytable">
+                <tr>
+                    <th>Testcase Id</th>
+                    <th>Tag</th>
+                    <th>Resource Path</th>
+                    <th>HTTP Method</th>
+                    <th>Role</th>
+                    <th>Update</th>
+                </tr>
                 {% for test in testlist %}
-                   <div class="newbot">
-                    <div>
-                        <p>
-                         {{test.id}}
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                         {{test.tags}}
-                        </p>
-                    </div>
-                    <div>
-                           <p>
-                            {{test.resourcePath}}
-                           </p>
-                    </div>
-                    <div>
-                        <p>
-                         {{test.description}}
-                        </p>
-                   </div>
-                   <div>
-                        <p>
-                        {{test.method}}
-                        </p>
-                   </div>
-                   </div>
+                <tr>
+                   <td>{{test.testcase_id}}</td>
+                   <td>{{test.test_tags}}</td>
+                   <td>{{test.resourcePath}}</td>
+                   <td>{{test.http_method}}</td>
+                   <td>{{test.role}}</td>
+                   <td><a href="{{url_for('testcase.edit_test',testid=test.testcase_id)}}">EDIT</a></td>
+                </tr>
                 {% endfor %}
-            </div>
+            </table>
         </div>
     </center>
    </div>

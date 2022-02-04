@@ -10,16 +10,16 @@
                 <tr>
                     <th>Account Id</th>
                     <th>Account Name</th>
-                    <th>Client ID</th>
-                    <th>Client Secret</th>
+                    <th>Update</th>
+                    <th>Refresh Token</th>
                     <th>Enviroment</th>
                 </tr>
                 {% for acc in accountlist.items %}
                 <tr>
                    <td>{{acc.account_id}}</td>
                    <td>{{acc.account_name}}</td>
-                   <td>{{acc.clientid}}</td>
-                   <td>{{acc.clientsecret}}</td>
+                   <td><a href="{{url_for('account.update_account',accountid=acc.account_id)}}">EDIT</a></td>
+                   <td>{{acc.refreshtoken}}</td>
                    {% if acc.enviroment_id==1 %}
                    <td>QE</td>
                    {% elif acc.enviroment_id==2 %}

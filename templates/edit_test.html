@@ -1,0 +1,35 @@
+{% extends "home.html" %}
+{% block content %}
+   <div id="addbots">
+    <center>
+        <div class="panel">
+            <h2>Update Test</h2>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            <div>
+               <div><h3>{{form.tags.label}}</h3></div>
+               <div>{{form.tags}}</div>
+            </div>
+            <div>
+               <div><h3>{{form.description.label}}</h3></div>
+               <div>{{form.description}}</div>
+            </div>
+            <div>
+               <div><h3>{{form.resourcePath.label}}</h3></div>
+               <div>{{form.resourcePath}}</div>
+            </div>
+            <div>
+               <div><h3>{{form.method.label}}</h3></div>
+               <div>{{form.method}}</div>
+            </div>
+            <div>
+                <div><h3>{{form.role.label}}</h3></div>
+                <div>{{form.role}}</div>
+             </div>
+            <div >
+               <input type="submit" value="Submit">
+            </div>
+        </form>
+    </center>
+   </div>
+{% endblock %}

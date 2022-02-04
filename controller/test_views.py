@@ -32,18 +32,20 @@ def test_list():
 
 @testcase.route('/edit/<testid>',methods=['GET','POST'])
 def edit_test(testid):
-         testobj=Testcase.query.get(testid)
-         testform=TestForm(obj=testobj)
-         if request.method=="POST" and testform.validate:
-               testobj.test_tags=request.form.get("tags")
-               testobj.test_description=request.form.get("description")
-               testobj.resourcePath=request.form.get("resourcePath")
-               testobj.http_method=request.form.get("method")
-               testobj.role=request.form.get("role")
-               db.session.commit()
-               return redirect(url_for("home.home"))
-         return render_template("add_test.html",form=testform)
-
+            testobj=Testcase.query.get(testid)
+            testform=TestForm(obj=testobj)
+            testform.tags.data=testobj.test_tags
+            testform.description.data=testobj.test_description
+            testform.method.data=testobj.http_method
+            if request.method=="POST" and testform.validate:
+                  testobj.test_tags=request.form.get("tags")
+                  testobj.test_description=request.form.get("description")
+                  testobj.resourcePath=request.form.get("resourcePath")
+                  testobj.http_method=request.form.get("method")
+                  testobj.role=request.form.get("role")
+                  db.session.commit()
+                  return redirect(url_for("home.home"))
+            return render_template("edit_test.html",form=testform)
    
        
 

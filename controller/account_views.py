@@ -57,6 +57,6 @@ def update_account(accountid):
             accountobj.refreshtoken=request.form.get("refreshtoken")
             db.session.commit()
             return redirect(url_for("home.home"))
-        return render_template("add_account.html",form=accountform)
+        return render_template("edit_account.html",form=accountform)
 
 
