@@ -40,7 +40,7 @@ def edit_test(testid):
             if request.method=="POST" and testform.validate:
                   testobj.test_tags=request.form.get("tags")
                   testobj.test_description=request.form.get("description")
-                  testobj.resourcePath=request.form.get("resourcePath")
+                  testobj.resource_path=request.form.get("resourcePath")
                   testobj.http_method=request.form.get("method")
                   testobj.role=request.form.get("role")
                   db.session.commit()

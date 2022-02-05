@@ -6,7 +6,7 @@ class Testcase(db.Model):
         testcase_id=db.Column(db.String(20),nullable=False,unique=True,primary_key=True)
         test_tags=db.Column(db.String(100),nullable=False,unique=True)
         test_description=db.Column(db.String(150),nullable=False)
-        resourcePath=db.Column(db.String(150),nullable=False)
+        resource_path=db.Column(db.String(150),nullable=False)
         http_method=db.Column(db.String(20),nullable=False)
         role=db.Column(db.String(20),nullable=False)
         testdata=db.relationship("Testdata",backref="testdata_testcase")
@@ -14,11 +14,11 @@ class Testcase(db.Model):
         def __str__(self):
             return f"{self.testcase_id} {self.test_description}"
 
-        def __init__(self,test_id,test_tag,description,resourcePath,method,role):
+        def __init__(self,test_id,test_tag,description,resourcepath,method,role):
             self.testcase_id=test_id
             self.test_tags=test_tag
             self.test_description=description
-            self.resourcePath=resourcePath
+            self.resource_path=resourcepath
             self.http_method=method
             self.role=role
 
