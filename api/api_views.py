@@ -18,8 +18,6 @@ def get_data(testid):
             return jsonify({"response":"BAD REQUEST"})
 
 
-
-
 @api.route('/adddata',methods=['POST'])
 def set_data():
         try:
@@ -46,3 +44,14 @@ def get_all_tests(enviroment):
         return jsonify(tests)
     except Exception as e:
         return jsonify({"response":"BADREQUEST"})
+
+@api.route('/testcases',methods=['GET'])
+def get_all_testid():
+    try:
+        all_test=Testcase.query.all()
+        test_list=list(map(lambda obj:obj.testcase_id,all_test))
+        return jsonify(test_list)
+    except Exception as e:
+        return jsonify({"response":"BADREQUEST"})
+    
+    
