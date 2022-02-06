@@ -1,12 +1,13 @@
 from Model import db
 from flask import Flask
-from Route.route import testcase,home,account,enviroment,api,testdata
+from Route.route import testcase,home,account,enviroment,api,testdata,report
 from controller import test_views
 from controller import home_views
 from controller import account_views
 from controller import enviroment_views
 from controller import testdata_view
 from api import api_views
+from controller import report_view
 
 
 
@@ -30,6 +31,7 @@ def create_app():
    app.register_blueprint(enviroment)
    app.register_blueprint(api)
    app.register_blueprint(testdata)
+   app.register_blueprint(report)
    return app
 
 if __name__=="__main__":
