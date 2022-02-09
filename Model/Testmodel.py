@@ -81,20 +81,20 @@ class Testdata(db.Model):
 
 
 class Report(db.Model):
-        __tablename__="report"
-        testcase_id=db.Column(db.String(20),nullable=False,primary_key=True)
-        enviroment_id=db.Column(db.Integer,nullable=False)
-        account_id=db.Column(db.Integer,nullable=False)
-        verdict=db.Column(db.Boolean(),default=False,nullable=False)
+            __tablename__="report"
+            testcase_id=db.Column(db.String(20),nullable=False,primary_key=True)
+            enviroment_id=db.Column(db.Integer,nullable=False)
+            account_id=db.Column(db.Integer,nullable=False)
+            verdict=db.Column(db.Boolean(),default=False,nullable=False)
 
-        def __init__(self,testcase_id,enviroment_id,account_id,verdict):
-            self.testcase_id=testcase_id
-            self.enviroment_id=enviroment_id
-            self.account_id=account_id
-            self.verdict=verdict
+            def __init__(self,testcase_id,enviroment_id,account_id,verdict):
+                self.testcase_id=testcase_id
+                self.enviroment_id=enviroment_id
+                self.account_id=account_id
+                self.verdict=verdict
 
-        def __str__(self):
-            return f"{self.testcase_id} and {self.verdict}"
+            def __str__(self):
+                return f"{self.testcase_id} and {self.verdict}"
 
 
 

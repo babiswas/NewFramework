@@ -1,5 +1,4 @@
 from wtforms import Form,StringField,SelectField,TextAreaField
-import wtforms_json
 
 
 class TestForm(Form):
